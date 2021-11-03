@@ -119,7 +119,7 @@
       state: latest
     when: ansible_distribution == "Ubuntu"
 
-- hosts: file_server
+- hosts: file_servers
   become: true
   tasks:
 
