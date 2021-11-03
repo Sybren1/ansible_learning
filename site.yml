@@ -25,7 +25,7 @@
 #Add ssh key for user, note use your own generated .pub key for this to work
   - name: add ssh key for piet
     tags: always
-    authorized_keys:
+    authorized_key:
       user: piet
       key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOynsYChBvEikhxyWG1fyFsBGuSTuQhAonm/76CZSvpH ansible"
 
