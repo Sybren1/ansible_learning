@@ -4,18 +4,17 @@
   become: true
   pre_tasks:
 
-  - name: install updates (Ubuntu)
+  - name: update repo cache (Ubuntu)
     tags: always
     apt:
-      upgrade: dist
       update_cache: yes
+    changed_when: false
     when: ansible_distribution == "Ubuntu"
 
 - hosts: all
   become: true
   tasks:
 
-#Add user with sudo privalges
   - name: add user piet
     tags: always
     user:
@@ -28,16 +27,6 @@
     authorized_key:
       user: piet
       key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOynsYChBvEikhxyWG1fyFsBGuSTuQhAonm/76CZSvpH ansible"
-
-#Add a sudoers file for a user
-  - name: add sudoers file for piet
-    tags: always
-    copy:
-      src: sudoer_piet
-      dest: /etc/sudoers.d/piet
-      owner: root
-      group: root
-      mode: 0440
 
 - hosts: workstation
   become: true

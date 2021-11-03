@@ -1,0 +1,40 @@
+---
+
+- hosts: all
+  become: true
+  pre_tasks:
+
+  - name: install updates (Ubuntu)
+    tags: always
+    apt:
+      upgrade: dist
+      update_cache: yes
+    when: ansible_distribution == "Ubuntu"
+
+- hosts: all
+  become: true
+  tasks:
+
+#Add user with sudo privalges
+  - name: add user piet
+    tags: always
+    user:
+      name: piet
+      groups: root
+
+#Add ssh key for user, note use your own generated .pub key for this to work
+  - name: add ssh key for piet
+    tags: always
+    authorized_key:
+      user: piet
+      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOynsYChBvEikhxyWG1fyFsBGuSTuQhAonm/76CZSvpH ansible"
+
+#Add a sudoers file for a user
+  - name: add sudoers file for piet
+    tags: always
+    copy:
+      src: sudoer_piet
+      dest: /etc/sudoers.d/piet
+      owner: root
+      group: root
+      mode: 0440
