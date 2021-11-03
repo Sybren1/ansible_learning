@@ -1,7 +1,6 @@
-client@192.168.62.130
-client@192.168.62.131
-#laptop
 [web_servers]
-client@192.168.5.131
+client@192.168.186.129
 [db_servers]
+client@192.168.186.130
 [file_servers]
+client@192.168.186.131

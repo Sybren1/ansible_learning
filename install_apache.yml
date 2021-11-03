@@ -1,5 +1,4 @@
 ---
-
 - hosts: all
   become: true
   tasks:
@@ -11,4 +10,3 @@
         -  "{{ php_package }}"
       state: latest
       update_cache: yes
-
