@@ -19,6 +19,7 @@
     package:
       name: unzip
 
+#Example to donwload and unzip a program to a target machine
   - name: install terraform
     unarchive:
       src: https://releases.hashicorp.com/terraform/1.0.10/terraform_1.0.10_linux_amd64.zip
@@ -32,6 +33,7 @@
   become: true
   tasks:
 
+#Example to installing packages to a machine
   - name: install apache package and php package
     tags: apache,apache2,ubuntu
     apt:
@@ -41,6 +43,34 @@
       state: latest
     when: ansible_distribution == "Ubuntu"
 
+#Example to start or stop a service of a target machine
+  - name: start apache service (Ubuntu)
+    tags: apache,apache2,ubuntu
+    serivce:
+      name: apache2
+      state: started
+      enabled: yes
+    when: ansible_distribution == "Ubuntu"
+
+#Example to change a line within a file or config
+  - name: changing Timeout in apache2.conf
+    tags: apache,ubuntu,apache2
+    lineinfile:
+      path: /etc/apache2/apache2.conf
+      regexp: '^Timeout'
+      line: Timeout 60
+    when: ansible_distribution == "Ubuntu"
+    register: apache2
+
+#Restarting service apache2 when a change has happend
+  - name: restarting apache2
+    tags: apache,apache2,ubuntu
+    service:
+      name: apache2
+      state: restarted
+    when: apache2.changed
+
+#Example to copy a file to a specified place on a target machine
   - name: copy default html file for site
     tags: apache,apache2,httpd,site
     copy:
