@@ -5,7 +5,8 @@ Voor het gebruik van deze playbooks bootstrap, site, install_apache en remove_ap
 Moet je ansible op je main machine hebben gedownload.
 De inventory staan hosts ip adressen, zorg ervoor dat deze ip adressen kloppen  met de machines die jij gebruikt.
 Ik heb ook gebruik gemaakt van hele simpele wachtwoorden, als je goed kijkt hebben we een main account toegevoegd die de juiste SSH keys gebruikt om in te loggen met de machines.
-Tijdens het testen heb ik de dezelfde wachtwoorden gebruikt voor elke verschillende hosts, omdat dit makkelijker was voor het uitvoeren van de Paybooks
+Tijdens het testen heb ik de dezelfde wachtwoorden gebruikt voor elke verschillende hosts, omdat dit makkelijker was voor het uitvoeren van de Paybooks.
+Gebruikers naam en Wachtwoord voor de ansible machine is: ansible
 # SSH
 Ansible maakt gebruik van ssh keys om een connectie te maken met de hosts machines.
 In mijn voorbeeld heb ik gebruik gemaakt van de commandos hieronder
