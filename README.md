@@ -21,4 +21,3 @@ ssh-copy-id -i  ~/.ssh/ansible [hosts ip adress]
 Check of je zonder wachtwoord een ssh connectie kunt maken
 
 ssh -i ~/.ssh/ansible [hosts ip adress]
-
